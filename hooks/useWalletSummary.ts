@@ -41,14 +41,16 @@ const useWalletSummary = (walletAddress: string) => {
         totalSellTimes: res.totalSellTimes.month,
         totalBuyTimes: res.totalBuyTimes.month,
       };
-
+      let totalBuySellTimes: any[] = [];
+      let netVolumes: any[] = [];
       const months = Object.keys(temp.sellVolume).sort();
-      const totalBuySellTimes = months.map(
-        (month) => temp.totalSellTimes[month] + temp.totalBuyTimes[month]
-      );
-      const netVolumes = months.map(
-        (month) => temp.buyVolume[month] - temp.sellVolume[month]
-      );
+      months.forEach((item) => {
+        totalBuySellTimes.push(
+          temp.totalSellTimes[item] + temp.totalBuyTimes[item]
+        );
+
+        netVolumes.push(+temp.buyVolume[item] - +temp.sellVolume[item]);
+      });
 
       const newChartData = {
         labels: months,
