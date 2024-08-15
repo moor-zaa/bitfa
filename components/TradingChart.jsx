@@ -9,6 +9,8 @@ import {
   Title,
   Tooltip,
   Legend,
+  LineController,
+  BarController,
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
 import COLORS from "@/constants/colors";
@@ -21,7 +23,9 @@ ChartJS.register(
   LineElement,
   Title,
   Tooltip,
-  Legend
+  Legend,
+  LineController,
+  BarController
 );
 
 const TradingChart = ({ data }) => {
